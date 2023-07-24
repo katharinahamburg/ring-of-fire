@@ -1,5 +1,5 @@
 export class Game {
-    public players: string[] = [];
+    public players: string[] = ['Monika', 'Anne', 'Peleope'];
     public stack: string[] = [];
     public playedCards: string [] = [];
     public currentPlayer: number = 0;
@@ -13,25 +13,9 @@ export class Game {
             this.stack.push('hearts__'+ i);
         }
 
-        shuffle(this.stack);
+        this.stack = this.stack.sort((a, b) => 0.5 - Math.random());
     }
 }
 
-function shuffle (array: string[]) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle.
-    while (0 !== currentIndex) {
   
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex], array[randomIndex];
-        array[randomIndex], array[currentIndex];
-    }
-  
-    return array;
-}
+    
