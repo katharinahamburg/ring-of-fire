@@ -3,33 +3,35 @@ export class Game {
     public stack: string[] = [];
     public playedCards: string [] = [];
     public currentPlayer: number = 0;
+  
 
     constructor(){
         for (let i = 1; i < 14; i++) {
-            this.stack.push('ace_'+ 1);
-            this.stack.push('hearts__'+ 1);
-            this.stack.push('diamonds__'+ 1);
-            this.stack.push('clubs__'+ 1);
+            this.stack.push('ace_'+ i);
+            this.stack.push('clubs__'+ i);
+            this.stack.push('diamonds__'+ i);
+            this.stack.push('hearts__'+ i);
         }
 
         shuffle(this.stack);
     }
 }
 
-function shuffle<T>(array: T[]): T[] {
-    let currentIndex = array.length,  randomIndex;
+function shuffle (array: string[]) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (0 !== currentIndex) {
   
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+      currentIndex -= 1;
   
       // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+      temporaryValue = array[currentIndex];
+      array[currentIndex], array[randomIndex];
+        array[randomIndex], array[currentIndex];
     }
   
     return array;
-};
+}
